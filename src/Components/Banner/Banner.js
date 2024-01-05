@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {API_KEY, Auth, baseUrl} from '../../constants/constants'
+import axios from '../../axios'
 import "./Banner.css"
 
+
 function Banner() {
+  const options = {
+    method: 'GET',
+    url: baseUrl,
+    params: {language: 'en-US'},
+    headers: {
+      accept: 'application/json',
+      Authorization: Auth
+    }
+  };
+  useEffect(()=>{
+    axios.request(options) 
+    axios.then((response)=>{
+      console.log(response.data)
+    })
+
+  },[])
   return (
     <div className='banner'>
         <div className='content'>
