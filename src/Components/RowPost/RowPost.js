@@ -1,29 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import { useEffect } from 'react';
+import YT from 'react-youtube'
 import "./RowPost.css"
-import { API_KEY, imageUrl } from '../../constants/constants';
+import {API_KEY, imageUrl } from '../../constants/constants';
 import axios from '../../axios';
+import YouTube from 'react-youtube';
 
-function RowPost() {
-  const [movies, setMovies] = useState([])
+function RowPost(props) {
+  const [movies,setMovies] = useState([])
+  const [urlid,setUrlid] =useState([]);
   useEffect(() => {
-    axios.get(`/discover/tv?api_key=${API_KEY}&with_networks=213`)
-    console.log(response.data);
-    setMovies(response.data.results);
-  }).catch(err =>{
-    // alert('Network Error')
-  })
-}, [])
-  return (
-    <div className='row'>
-      <h2>Neflix Originals</h2>
+    axios.get(props.url).then(response=>{
+      console.log(response.data);
+      setMovies(response.data.results);
+    }).catch(err=>{
+      alert('Network Error');
+    })
+  },[])
+  const opts = {
+    height: '390',
+    width: '100%',
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+  const handleTrailer =(id)=>{
+    axios.get(`movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response=>{
+        if(response.data.results.length !==0){
+          setUrlid(response.data.results[0])
+        }else{
+          alert("Trailer not Available")
+        }
+     })
+  }
+    return (
+     <div className='row'>
+      <h2>{props.title}</h2>
       <div className='posters'>
-         {movies.map(() => {
-         <img className="poster" src={`${imageUrl + object.backdrop_path}`} alt="poster" />
-        })}
+         {movies.map((obj) => 
+         <img onClick={()=>handleTrailer(obj.id)} className={props.isSmall ? 'smallposter' : 'poster' } alt="" src={`${imageUrl+obj.backdrop_path}`}/>
+      
+        )}
+      </div>
+     { urlid && <YouTube opts={opts} videoId={urlid.key} /> }
     </div>
-  </div>
-
+  )
 }
 
 
