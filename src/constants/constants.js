@@ -1,3 +1,3 @@
 export const baseUrl = 'https://api.themoviedb.org/3';
 export const API_KEY ='52242920b95eb491262df210652f6e99';
-export const Auth='Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MjI0MjkyMGI5NWViNDkxMjYyZGYyMTA2NTJmNmU5OSIsInN1YiI6IjY1OTdiYjJiNzI2ZmIxNDdlNmFiMmIxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tUCF4rJJdgW5QRKk18uoj7L6CVAIecxpMyTPF7-R9Cs'
+export const imageUrl = 'https://image.tmdb.org/t/p/original';
