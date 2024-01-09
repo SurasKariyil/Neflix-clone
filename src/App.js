@@ -1,9 +1,9 @@
-import React from "react";
-import Navbar from "./Components/Navbar/Navbar";
-import "./App.css"
-import Banner from "./Components/Banner/Banner";
-import RowPost from "./Components/RowPost/RowPost";
 import { actions, comedy, documentaries, horror, originals, romantic } from './urls'
+import RowPost from "./Components/RowPost/RowPost";
+import Navbar from "./Components/Navbar/Navbar";
+import Banner from "./Components/Banner/Banner";
+import React from "react";
+import "./App.css"
 
 function App() {
   return (
@@ -17,8 +17,6 @@ function App() {
       <RowPost url={horror}title="Horror Movies" isSmall/>
       <RowPost url={documentaries} title="Documentaries" isSmall/>
     </div>
-   
   );
 }
-
 export default App;

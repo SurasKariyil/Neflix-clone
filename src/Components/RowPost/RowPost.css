@@ -1,7 +1,6 @@
 .row{
     margin-left: 20px;
     color: #fff;
-
 }
 .posters{
     display: flex;
@@ -15,9 +14,7 @@
 .poster{
     cursor: pointer;
     max-height: 250px;
-    margin-right: 10px;
-    
-  
+    margin-right: 10px; 
 }
 .smallposter{
     cursor: pointer;

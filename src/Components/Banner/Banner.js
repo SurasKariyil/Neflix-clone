@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
 import {API_KEY,imageUrl, baseUrl} from '../../constants/constants'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import axios from '../../axios'
 import "./Banner.css"
-import { useState } from 'react'
-
 
 function Banner() {
   const [movie, setMovie] = useState()
@@ -12,7 +11,6 @@ function Banner() {
       console.log(response.data.results[0])
       setMovie(response.data.results[0])
     })
-
   },[])
   return (
     <div style={{backgroundImage:`url(${movie ? imageUrl+movie.backdrop_path : ""})`}}

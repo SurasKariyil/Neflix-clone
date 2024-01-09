@@ -1,9 +1,8 @@
+import {API_KEY, imageUrl } from '../../constants/constants'
 import React, { useEffect, useState } from 'react'
-import YT from 'react-youtube'
+import YouTube from 'react-youtube'
+import axios from '../../axios'
 import "./RowPost.css"
-import {API_KEY, imageUrl } from '../../constants/constants';
-import axios from '../../axios';
-import YouTube from 'react-youtube';
 
 function RowPost(props) {
   const [movies,setMovies] = useState([])
@@ -17,7 +16,7 @@ function RowPost(props) {
     })
   },[])
   const opts = {
-    height: '390',
+    height: '400',
     width: '100%',
     playerVars: {
       autoplay: 0,
@@ -38,13 +37,10 @@ function RowPost(props) {
       <div className='posters'>
          {movies.map((obj) => 
          <img onClick={()=>handleTrailer(obj.id)} className={props.isSmall ? 'smallposter' : 'poster' } alt="" src={`${imageUrl+obj.backdrop_path}`}/>
-      
         )}
       </div>
-     { urlid && <YouTube opts={opts} videoId={urlid.key} /> }
+  { urlid && <YouTube opts={opts} videoId={urlid.key}  /> }
     </div>
   )
 }
-
-
 export default RowPost
